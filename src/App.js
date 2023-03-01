@@ -1,25 +1,40 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './Components/Header';
+import Home from './Components/Home';
+import Login from './Components/Login';
+import Info from './Components/ActionComponents/Info';
+import Edit from './Components/ActionComponents/Edit';
+import NewCar from './Components/NewCar';
 
 function App() {
+
+ // const dispatch = useDispatch();
+  // const addCount = () => {
+  //   dispatch({type:"ADD Count", payload:5})
+  // }
+  
+  // const minCount = () => {
+  //   dispatch({type:"Increase Count", payload:5})
+  // }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <div className="App">
+                <Header/>
+                <Routes>
+                  <Route  element = {<Login/>}  path="/" />
+                  <Route  element={<Home/>} path="/home"/>
+                  <Route element = {<Info/>} path= "car/:id" />
+                  <Route element = {<Edit/>} path = "edit/:id" />
+                  <Route element = {<NewCar />} path = "/create" />
+          </Routes>
+          
+        </div>
+        </Router>
+         
   );
+
 }
 
 export default App;
